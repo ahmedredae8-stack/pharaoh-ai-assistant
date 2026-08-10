@@ -1,5 +1,5 @@
         /* Global Styles (Default browser font size used) */
-        body {
+        body.pharaoh-body {
             background-color: #020408;
             color: #e2e8f0;
             font-family: 'IBM Plex Sans Arabic', sans-serif;
