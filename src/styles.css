@@ -4,6 +4,71 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Pharaoh Ai design tokens (ported from the original app) ───────────── */
+@theme {
+  --color-cyber-gold: #ffd700;
+  --color-cyber-gold-dim: #c5a000;
+  --color-cyber-dark: #050b14;
+  --color-cyber-blue: #00f0ff;
+  --color-glass-bg: rgba(16, 24, 39, 0.7);
+  --color-glass-border: rgba(255, 215, 0, 0.15);
+
+  --font-sans: "IBM Plex Sans Arabic", sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 2s infinite;
+  --animate-grid-move: gridMove 20s linear infinite;
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    }
+    50% {
+      opacity: 0.7;
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+  }
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 100px;
+    }
+  }
+  @keyframes scanline {
+    0% {
+      top: -10%;
+    }
+    100% {
+      top: 110%;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 /*
  * Design system definition.
  *
