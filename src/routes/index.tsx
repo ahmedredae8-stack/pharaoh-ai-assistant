@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
         href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;500;700;900&display=swap",
       },
     ],
-    scripts: [{ children: TAILWIND_CONFIG }, { src: "https://cdn.tailwindcss.com" }],
+    scripts: [{ src: "https://cdn.tailwindcss.com" }, { children: TAILWIND_CONFIG }],
   }),
   component: Index,
 });
