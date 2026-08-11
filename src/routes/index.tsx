@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 
 import { APP_HTML } from "@/legacy/markup";
 import "@/legacy/legacy.css";
+import { PharaohShell } from "@/components/account/PharaohShell";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,5 +53,10 @@ function Index() {
     };
   }, []);
 
-  return <div ref={hostRef} dangerouslySetInnerHTML={{ __html: APP_HTML }} />;
+  return (
+    <>
+      <div ref={hostRef} dangerouslySetInnerHTML={{ __html: APP_HTML }} />
+      <PharaohShell />
+    </>
+  );
 }
