@@ -37,7 +37,7 @@ export const saveMyProgress = createServerFn({ method: "POST" })
     const { error } = await context.supabase.from("progress").upsert(
       {
         user_id: context.userId,
-        data: data.data,
+        data: data.data as never,
         lesson_skip_count: data.lessonSkipCount,
         updated_at: new Date().toISOString(),
       },
