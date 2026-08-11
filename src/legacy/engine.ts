@@ -1974,6 +1974,12 @@ export function bootPharaoh() {
         }
         
         async function loadUserData() {
+            const cloud = window.__pharaohBridge && window.__pharaohBridge.cloudProgress;
+            if (cloud && cloud.progress) {
+                state.progress = { ...state.progress, ...cloud.progress };
+                state.lessonSkipCount = cloud.lessonSkipCount || 0;
+                return;
+            }
             const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
             if (savedData) {
                 const loadedData = JSON.parse(savedData);
@@ -1989,6 +1995,9 @@ export function bootPharaoh() {
                 lessonSkipCount: state.lessonSkipCount
             };
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dataToSave));
+            if (window.__pharaohBridge && window.__pharaohBridge.onProgressSave) {
+                try { window.__pharaohBridge.onProgressSave(dataToSave); } catch (e) { console.error(e); }
+            }
             updateSkipCountDisplay();
         }
         
@@ -2095,6 +2104,11 @@ export function bootPharaoh() {
         document.querySelectorAll('.path-btn').forEach(button => {
             button.addEventListener('click', (e) => {
                 const pathId = e.currentTarget.dataset.path;
+                const bridge = window.__pharaohBridge;
+                if (bridge && bridge.isPathLocked && bridge.isPathLocked(pathId)) {
+                    bridge.openPaywall(pathId);
+                    return;
+                }
                 if (!e.currentTarget.disabled) {
                     state.currentPathId = pathId;
                     showLessonList(pathId);
