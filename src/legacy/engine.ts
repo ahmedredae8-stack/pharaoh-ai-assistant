@@ -1915,6 +1915,13 @@ export function bootPharaoh() {
         
         queueMicrotask(initApp);
 
+        // Bridge used by the React shell to re-hydrate state after cloud sync.
+        window.__pharaohReloadProgress = async function () {
+            await loadUserData();
+            updateSkipCountDisplay();
+            updatePathButtonsState();
+        };
+
         // --- CORE FUNCTIONS ---
         async function initApp() {
             try {
