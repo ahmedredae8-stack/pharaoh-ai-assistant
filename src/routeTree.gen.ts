@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as ApiPublicPlayRtdnRouteImport } from './routes/api/public/play-rtdn'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicPlayRtdnRoute = ApiPublicPlayRtdnRouteImport.update({
   id: '/api/public/play-rtdn',
   path: '/api/public/play-rtdn',
@@ -32,30 +38,34 @@ const ApiPublicPlayRtdnRoute = ApiPublicPlayRtdnRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/api/public/play-rtdn'
+  fullPaths: '/' | '/auth' | '/roadmap' | '/api/public/play-rtdn'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/api/public/play-rtdn'
-  id: '__root__' | '/' | '/auth' | '/api/public/play-rtdn'
+  to: '/' | '/auth' | '/roadmap' | '/api/public/play-rtdn'
+  id: '__root__' | '/' | '/auth' | '/roadmap' | '/api/public/play-rtdn'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  RoadmapRoute: typeof RoadmapRoute
   ApiPublicPlayRtdnRoute: typeof ApiPublicPlayRtdnRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/play-rtdn': {
       id: '/api/public/play-rtdn'
       path: '/api/public/play-rtdn'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  RoadmapRoute: RoadmapRoute,
   ApiPublicPlayRtdnRoute: ApiPublicPlayRtdnRoute,
 }
 export const routeTree = rootRouteImport
