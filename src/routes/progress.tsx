@@ -39,7 +39,7 @@ function ProgressPage() {
   if (!loading && !session) {
     return (
       <Shell>
-        <p className="leading-8 text-muted-foreground">
+        <p className="leading-8 pharaoh-muted">
           سجّل الدخول لتتابع سلسلة أيامك وشاراتك ونتائجك عبر كل أجهزتك.
         </p>
         <a
@@ -55,7 +55,7 @@ function ProgressPage() {
   if (isPending || !data) {
     return (
       <Shell>
-        <p className="text-muted-foreground">جارٍ تحميل تقدّمك…</p>
+        <p className="pharaoh-muted">جارٍ تحميل تقدّمك…</p>
       </Shell>
     );
   }
@@ -101,7 +101,7 @@ function ProgressPage() {
               }`}
             >
               <div className="text-sm font-bold text-cyber-gold">{badge.title}</div>
-              <div className="mt-1 text-[11px] leading-5 text-muted-foreground">
+              <div className="mt-1 text-[11px] leading-5 pharaoh-muted">
                 {badge.description}
               </div>
             </div>
@@ -112,7 +112,7 @@ function ProgressPage() {
       <section className="mt-8">
         <h2 className="text-lg font-bold text-cyber-blue">آخر الاختبارات</h2>
         {data.quizzes.length === 0 ? (
-          <p className="mt-2 text-sm text-muted-foreground">لم تُنجز أي اختبار بعد.</p>
+          <p className="mt-2 text-sm pharaoh-muted">لم تُنجز أي اختبار بعد.</p>
         ) : (
           <ul className="mt-3 space-y-2">
             {[...data.quizzes]
@@ -123,7 +123,7 @@ function ProgressPage() {
                   key={`${quiz.path_id}-${quiz.lesson_index}-${index}`}
                   className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm"
                 >
-                  <span className="text-muted-foreground">
+                  <span className="pharaoh-muted">
                     درس {quiz.lesson_index + 1} — {quiz.path_id}
                   </span>
                   <span className="font-bold text-cyber-gold">
@@ -138,7 +138,7 @@ function ProgressPage() {
       {data.labs.length >= 10 && (
         <section className="mt-8 rounded-2xl border border-cyber-gold/40 bg-cyber-gold/5 p-6 text-center">
           <h2 className="text-lg font-bold text-cyber-gold">شهادة إنجاز</h2>
-          <p className="mt-2 text-sm leading-7 text-muted-foreground">
+          <p className="mt-2 text-sm leading-7 pharaoh-muted">
             {data.displayName ?? "متدرّب فرعون Ai"} — أنجز {data.labs.length} معملًا عمليًا و
             {data.quizzes.length} اختبارًا في الأمن السيبراني.
           </p>
@@ -160,7 +160,7 @@ function ProgressPage() {
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div dir="rtl" className="min-h-screen bg-cyber-dark px-4 py-10 text-foreground">
+    <div dir="rtl" className="pharaoh-page min-h-screen px-4 py-10">
       <div className="mx-auto max-w-3xl">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-sm text-cyber-blue hover:underline">
@@ -170,7 +170,7 @@ function Shell({ children }: { children: React.ReactNode }) {
             خطة التعلّم
           </Link>
         </div>
-        <h1 className="mt-6 text-3xl font-black text-cyber-gold">لوحة تقدّمي</h1>
+        <h1 className="mt-6 text-3xl font-black pharaoh-title">لوحة تقدّمي</h1>
         <div className="mt-6">{children}</div>
       </div>
     </div>
@@ -181,7 +181,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-cyber-blue/25 bg-black/40 p-4 text-center">
       <div className="text-2xl font-black text-cyber-gold">{value}</div>
-      <div className="mt-1 text-xs text-muted-foreground">{label}</div>
+      <div className="mt-1 text-xs pharaoh-muted">{label}</div>
     </div>
   );
 }

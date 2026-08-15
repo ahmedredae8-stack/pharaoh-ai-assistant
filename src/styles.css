@@ -207,3 +207,53 @@
     color: var(--color-foreground);
   }
 }
+
+/* ── Pharaoh page chrome (shared by /courses, /roadmap, /progress) ─────── */
+@utility pharaoh-page {
+  background-color: #050b14;
+  color: #e6f1ff;
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+
+  &::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at center, transparent 0%, #020408 92%);
+  }
+}
+
+@utility pharaoh-glass {
+  background: rgba(13, 18, 30, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px;
+}
+
+@utility pharaoh-title {
+  color: #ffd700;
+  text-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+  letter-spacing: -0.02em;
+}
+
+@utility pharaoh-muted {
+  color: rgba(214, 230, 245, 0.72);
+}

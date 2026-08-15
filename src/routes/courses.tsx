@@ -26,16 +26,16 @@ export const Route = createFileRoute("/courses")({
 
 function Courses() {
   return (
-    <div dir="rtl" className="min-h-screen bg-cyber-dark px-4 py-10 text-foreground">
+    <div dir="rtl" className="pharaoh-page min-h-screen px-4 py-10">
       <div className="mx-auto max-w-4xl">
         <Link to="/" className="text-sm text-cyber-blue hover:underline">
           ← رجوع للتطبيق
         </Link>
 
-        <h1 className="mt-6 text-3xl font-black text-cyber-gold md:text-4xl">
+        <h1 className="mt-6 text-3xl font-black pharaoh-title md:text-4xl">
           كورسات عملية — من الصفر إلى محترف في {TOTAL_WEEKS} أسبوعًا
         </h1>
-        <p className="mt-3 leading-8 text-muted-foreground">
+        <p className="mt-3 leading-8 pharaoh-muted">
           كل أسبوع له هدف واحد، معمل تنفّذه بيدك، مصدر مجاني موثوق، وتسليم يدخل ملفك المهني. مجموع
           الجهد ≈ {TOTAL_HOURS} ساعة عمل حقيقي — بمعدل 8 ساعات أسبوعيًا تنهيه في ستة أشهر.
         </p>
@@ -44,36 +44,36 @@ function Courses() {
           {PROGRAM.map((term) => (
             <section key={term.id}>
               <div className="flex flex-wrap items-center gap-3">
-                <h2 className="text-2xl font-bold text-cyber-gold">{term.title}</h2>
+                <h2 className="text-2xl font-bold pharaoh-title">{term.title}</h2>
                 <span className="text-xs text-cyber-blue">{PATH_LABELS[term.pathId]}</span>
               </div>
-              <p className="mt-1 text-sm text-muted-foreground">{term.subtitle}</p>
+              <p className="mt-1 text-sm pharaoh-muted">{term.subtitle}</p>
 
               <div className="mt-4 space-y-4">
                 {term.weeks.map((w) => (
                   <article
                     key={w.week}
-                    className="rounded-xl border border-cyber-blue/20 bg-black/40 p-5"
+                    className="pharaoh-glass border-cyber-blue/15 p-5"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="font-bold text-foreground">
+                      <h3 className="font-bold text-[#e6f1ff]">
                         <span className="text-cyber-blue">أسبوع {w.week}</span> — {w.title}
                       </h3>
-                      <span className="text-xs text-muted-foreground">{w.hours} ساعات</span>
+                      <span className="text-xs pharaoh-muted">{w.hours} ساعات</span>
                     </div>
-                    <p className="mt-2 text-sm leading-7 text-muted-foreground">{w.goal}</p>
+                    <p className="mt-2 text-sm leading-7 pharaoh-muted">{w.goal}</p>
                     <dl className="mt-3 space-y-2 text-sm leading-7">
                       <div>
                         <dt className="inline font-bold text-cyber-gold">المعمل: </dt>
-                        <dd className="inline text-muted-foreground">{w.lab}</dd>
+                        <dd className="inline pharaoh-muted">{w.lab}</dd>
                       </div>
                       <div>
                         <dt className="inline font-bold text-cyber-gold">المصدر: </dt>
-                        <dd className="inline text-muted-foreground">{w.resource}</dd>
+                        <dd className="inline pharaoh-muted">{w.resource}</dd>
                       </div>
                       <div>
                         <dt className="inline font-bold text-cyber-gold">التسليم: </dt>
-                        <dd className="inline text-muted-foreground">{w.deliverable}</dd>
+                        <dd className="inline pharaoh-muted">{w.deliverable}</dd>
                       </div>
                     </dl>
                   </article>
@@ -84,7 +84,7 @@ function Courses() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-cyber-gold/30 bg-cyber-gold/5 p-6 text-center">
-          <p className="leading-8 text-muted-foreground">
+          <p className="leading-8 pharaoh-muted">
             نفّذ أسبوعًا واحدًا فقط الآن — ثم تابع تقدّمك داخل التطبيق.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-3">
