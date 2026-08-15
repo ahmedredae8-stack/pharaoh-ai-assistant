@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as ApiPublicPlayRtdnRouteImport } from './routes/api/public/play-rtdn'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgressRoute = ProgressRouteImport.update({
@@ -44,6 +50,7 @@ const ApiPublicPlayRtdnRoute = ApiPublicPlayRtdnRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/courses': typeof CoursesRoute
   '/progress': typeof ProgressRoute
   '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/courses': typeof CoursesRoute
   '/progress': typeof ProgressRoute
   '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
@@ -59,19 +67,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/courses': typeof CoursesRoute
   '/progress': typeof ProgressRoute
   '/roadmap': typeof RoadmapRoute
   '/api/public/play-rtdn': typeof ApiPublicPlayRtdnRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/progress' | '/roadmap' | '/api/public/play-rtdn'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/courses'
+    | '/progress'
+    | '/roadmap'
+    | '/api/public/play-rtdn'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/progress' | '/roadmap' | '/api/public/play-rtdn'
+  to:
+    | '/'
+    | '/auth'
+    | '/courses'
+    | '/progress'
+    | '/roadmap'
+    | '/api/public/play-rtdn'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/courses'
     | '/progress'
     | '/roadmap'
     | '/api/public/play-rtdn'
@@ -80,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  CoursesRoute: typeof CoursesRoute
   ProgressRoute: typeof ProgressRoute
   RoadmapRoute: typeof RoadmapRoute
   ApiPublicPlayRtdnRoute: typeof ApiPublicPlayRtdnRoute
@@ -99,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/progress': {
@@ -128,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  CoursesRoute: CoursesRoute,
   ProgressRoute: ProgressRoute,
   RoadmapRoute: RoadmapRoute,
   ApiPublicPlayRtdnRoute: ApiPublicPlayRtdnRoute,
