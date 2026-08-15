@@ -94,6 +94,24 @@ export function PharaohShell() {
   return (
     <>
       <div dir="rtl" className="fixed top-3 left-3 z-[900] flex items-center gap-2 text-xs">
+        <a
+          href="/courses"
+          className="rounded-full border border-cyber-gold/40 bg-black/50 px-3 py-1 text-cyber-gold"
+        >
+          الكورسات
+        </a>
+        <a
+          href="/roadmap"
+          className="hidden rounded-full border border-cyber-blue/40 bg-black/50 px-3 py-1 text-cyber-blue sm:inline"
+        >
+          الخطة
+        </a>
+        <a
+          href="/progress"
+          className="rounded-full border border-cyber-blue/40 bg-black/50 px-3 py-1 text-cyber-blue"
+        >
+          تقدّمي
+        </a>
         {isPro ? (
           <span className="rounded-full border border-cyber-gold/50 bg-cyber-gold/10 px-3 py-1 font-bold text-cyber-gold">
             PRO
